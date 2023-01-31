@@ -2,10 +2,19 @@ import React from 'react';
 
 function Bootstrap() {
     return (
-        <div class="row">
+        <div class="container-fluid">
+            <div class="row">
             <FormText />
-            <UserBox />
-            <ContactBox />
+                <div class="row">
+                    <div class="col-xs-4">
+                        <RightBox />
+                    </div>
+                    <div class="col-xs-4">
+                        <LeftBox />
+                    </div>
+                </div>
+            </div>
+            <ButtonBox />
         </div>
     )
 }
@@ -13,7 +22,7 @@ function Bootstrap() {
 function UserBox() {
     return (
         <div class="card">
-            <h3 class="card-header">User</h3>
+            <h4 class="card-header">User:</h4>
             <div class="card-body">
                 <form>
                     <div class="row">
@@ -39,7 +48,7 @@ function UserBox() {
 function ContactBox() {
     return (
         <div class="card">
-            <h3 class="card-header">Contact</h3>
+            <h4 class="card-header">Contact:</h4>
             <div class="card-body">
                 <form>
                     <div class="row">
@@ -62,43 +71,61 @@ function ContactBox() {
     )
 }
 
-// function ScheduleBox() {
-//  return (
-// 
-//  )
-// }
-// 
-// function OtherBox() {
-//     return (
-// 
-//     )
-// }
-// 
-// function RightBox() {
-//     return (
-// 
-//     )
-// }
-// 
-// function LeftBox() {
-//     return (
-// 
-//     )
-// }
-// 
-// function BookingForm() {
-//     return (
-//         <div>
-// 
-//         </div>
-//     )
-// }
+function ScheduleBox() {
+ return (
+    <div class="card">
+        <h4 class="card-header">Schedule:</h4>
+    </div>
+    )
+}
+
+function OtherBox() {
+    return (
+        <div class="card">
+            <h4 class="card-header">Other:</h4>
+        </div>
+    )
+}
+
+function RightBox() {
+    return (
+        <div class="row">
+            <UserBox />
+            <ContactBox />
+            <ScheduleBox />
+        </div>
+    )
+}
+
+function LeftBox() {
+    return (
+        <div class="row">
+            <OtherBox />
+        </div>
+    )
+}
 
 function FormText() {
     return (
         <div class="card card-body">
             Fill out the form and click the submit button when complete...
         </div>
+    )
+}
+
+function ButtonBox() {
+    return (
+        <div class="row">
+        <div class="col-xs-4">
+          <button class="btn btn-block btn-primary"><i class="fa fa-thumbs-up"></i> Like</button>
+        </div>
+        <div class="col-xs-4">
+          <button class="btn btn-block btn-info"><i class="fa fa-info-circle"></i> Info</button>
+        </div>
+        <div class="col-xs-4">
+          <button class="btn btn-block btn-danger"><i class="fa fa-trash"></i> Delete</button>
+        </div>
+      </div>
     )
 }
 
