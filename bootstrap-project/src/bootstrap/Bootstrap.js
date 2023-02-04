@@ -1,19 +1,21 @@
 import React from 'react';
+import './Bootstrap.css'
 
 function Bootstrap() {
     return (
-        <div class="container-fluid">
-            <div class="row">
-            <FormText />
-                <div class="row">
-                    <div class="col-xs-4">
+        <div className='container-fluid'>
+            <div className='row'>
+                <FormText />
+                <div className='row'>
+                    <div className='col-sm'>
                         <RightBox />
                     </div>
-                    <div class="col-xs-4">
+                    <div className='col-sm'>
                         <LeftBox />
                     </div>
                 </div>
             </div>
+            <hr />
             <ButtonBox />
         </div>
     )
@@ -21,23 +23,17 @@ function Bootstrap() {
 
 function UserBox() {
     return (
-        <div class="card">
-            <h4 class="card-header">User:</h4>
-            <div class="card-body">
+        <div className='card'>
+            <h4 className='card-header'>User:</h4>
+            <div className='card-body'>
                 <form>
-                    <div class="row">
-                        <div class="col-xs-6">
-                            <label>Username:</label>
-                            <input type="text" class="form-control" placeholder="Type username..." required></input>
-                        </div>
-                        <div class="col-xs-6">
-                            <label>First Name:</label>
-                            <input type="text" class="form-control" placeholder="Type first name..." required></input>
-                        </div>
-                        <div class="col-xs-6">
-                            <label>Last Name:</label>
-                            <input type="text" class="form-control" placeholder="Type last name..." required></input>
-                        </div>
+                    <div className='row'>
+                        <label>Username:</label>
+                        <input type='text' className='form-control' placeholder='Type username...' required></input>
+                        <label>First Name:</label>
+                        <input type='text' className='form-control' placeholder='Type first name...' required></input>
+                        <label>Last Name:</label>
+                        <input type='text' className='form-control' placeholder='Type last name...' required></input>
                     </div>
                 </form>
             </div>
@@ -47,49 +43,81 @@ function UserBox() {
 
 function ContactBox() {
     return (
-        <div class="card">
-            <h4 class="card-header">Contact:</h4>
-            <div class="card-body">
-                <form>
-                    <div class="row">
-                        <div class="col-xs-6">
-                            <i class="fa fa-phone"></i>
-                            <input type="text" class="form-control" placeholder="Type phone#..." required></input>
+        <div className='card'>
+            <h4 className='card-header'>Contact:</h4>
+            <div className='card-body'>
+                <div className='form-group'>
+                    <div className='input-group'>
+                        <div className='input-group-prepend'>
+                            <i className='fa fa-phone'></i>
                         </div>
-                        <div class="col-xs-6">
-                            <i class="fa fa-fax"></i>
-                            <input type="text" class="form-control" placeholder="Type fax#..." required></input>
-                        </div>
-                        <div class="col-xs-6">
-                            <i class="fa fa-envelope"></i>
-                            <input type="text" class="form-control" placeholder="Type e-mail..." required></input>
-                        </div>
+                        <input type='text' className='form-control' placeholder='Type phone#...' required></input>
                     </div>
-                </form>
+                    <div className='input-group'>
+                        <div className='input-group-prepend'>
+                            <i className='fa fa-fax'></i>
+                        </div>
+                        <input type='text' className='form-control' placeholder='Type fax#...' required></input>
+                    </div>
+                    <div className='input-group'>
+                        <div className='input-group-prepend'>
+                            <i className='fa fa-envelope'></i>
+                        </div>
+                        <input type='text' className='form-control' placeholder='Type e-mail...' required></input>
+                    </div>
+                </div>
             </div>
         </div>
     )
 }
 
 function ScheduleBox() {
- return (
-    <div class="card">
-        <h4 class="card-header">Schedule:</h4>
-    </div>
+    return (
+        <div className='card'>
+            <h4 className='card-header'>Schedule:</h4>
+        </div>
     )
 }
 
 function OtherBox() {
     return (
-        <div class="card">
-            <h4 class="card-header">Other:</h4>
+        <div className='card'>
+            <h4 className='card-header'>Other:</h4>
+            <div className='card-body'>
+                <div className='form-group'>
+                    <label htmlFor='msg'>Message:</label>
+                    <textarea className='form-control' id='msg' rows={14} placeholder='Type message here...'></textarea>
+                    <label>Range:</label>
+                    <label htmlFor='prty'>Priority</label>
+                    <div className='row'>
+                        <div className='col-sm'>
+                            <div className='form-check'>
+                                <input className='form-check-input' type='radio' id='lowprty' checked></input>
+                                <label className='form-check-label' htmlFor='lowprty'>Low</label>
+                            </div>
+                        </div>
+                        <div className='col-sm'>
+                            <div className='form-check'>
+                                <input className='form-check-input' type='radio' id='medprty'></input>
+                                <label className='form-check-label' htmlFor='medprty'> Medium</label>
+                            </div>
+                        </div>
+                        <div className='col-sm'>
+                            <div className='form-check'>
+                                <input className='form-check-input' type='radio' id='highprty'></input>
+                                <label className='form-check-label' htmlFor='highprty'> High</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     )
 }
 
 function RightBox() {
     return (
-        <div class="row">
+        <div className='row'>
             <UserBox />
             <ContactBox />
             <ScheduleBox />
@@ -99,7 +127,7 @@ function RightBox() {
 
 function LeftBox() {
     return (
-        <div class="row">
+        <div className='row'>
             <OtherBox />
         </div>
     )
@@ -107,7 +135,7 @@ function LeftBox() {
 
 function FormText() {
     return (
-        <div class="card card-body">
+        <div className='card card-body'>
             Fill out the form and click the submit button when complete...
         </div>
     )
@@ -115,17 +143,14 @@ function FormText() {
 
 function ButtonBox() {
     return (
-        <div class="row">
-        <div class="col-xs-4">
-          <button class="btn btn-block btn-primary"><i class="fa fa-thumbs-up"></i> Like</button>
+        <div className='row'>
+            <div className='col-sm'>
+                <button className='btn btn-block btn-info'><i className='fa fa-eraser'></i> Reset</button>
+            </div>
+            <div className='col-sm'>
+                <button className='btn btn-block btn-primary'><i className='fa fa-paper-plane'></i> Submit</button>
+            </div>
         </div>
-        <div class="col-xs-4">
-          <button class="btn btn-block btn-info"><i class="fa fa-info-circle"></i> Info</button>
-        </div>
-        <div class="col-xs-4">
-          <button class="btn btn-block btn-danger"><i class="fa fa-trash"></i> Delete</button>
-        </div>
-      </div>
     )
 }
 
