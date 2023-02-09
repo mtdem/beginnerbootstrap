@@ -34,15 +34,15 @@ function UserBox() {
                     <div className='row'>
                         <label htmlFor='usernameInput'>Username:</label>
                         <div className='col-xs-2'>
-                            <input type='text' className='form-control usr' id='usernameInput' placeholder='Type username...' required onChange={(e) => setUsername(e.target.value)} maxLength={40}></input>
+                            <input type='text' className='form-control usr' id='usernameInput' placeholder='Type username...' required onChange={(e) => setUsername(e.target.value)} maxLength={40} value={username}></input>
                         </div>
                         <label htmlFor='firstNameInput'>First Name:</label>
                         <div className='col-xs-2'>
-                            <input type='text' className='form-control usr' id='firstNameInput' placeholder='Type first name...' required onChange={(e) => setFirstName(e.target.value)} maxLength={40}></input>
+                            <input type='text' className='form-control usr' id='firstNameInput' placeholder='Type first name...' required onChange={(e) => setFirstName(e.target.value)} maxLength={40} value={firstName}></input>
                         </div>
                         <label htmlFor='lastNameInput'>Last Name:</label>
                         <div className='col-xs-2'>
-                            <input type='text' className='form-control usr' id='lastNameInput' placeholder='Type last name...' required onChange={(e) => setLastName(e.target.value)} maxLength={40}></input>
+                            <input type='text' className='form-control usr' id='lastNameInput' placeholder='Type last name...' required onChange={(e) => setLastName(e.target.value)} maxLength={40} value={lastName}></input>
                         </div>
                     </div>
                 </div>
@@ -65,19 +65,19 @@ function ContactBox() {
                         <div className='input-group-prepend'>
                             <span className='input-group-text contact-icon'><i className='fa fa-phone'></i></span>
                         </div>
-                        <input type='text' className='form-control' placeholder='Type phone#...' required onChange={(e) => setPhoneNumber(e.target.value)}></input>
+                        <input type='tel' className='form-control' placeholder='Type phone#...' required onChange={(e) => setPhoneNumber(e.target.value)} value={phoneNumber}></input>
                     </div>
                     <div className='input-group'>
                         <div className='input-group-prepend'>
                             <span className='input-group-text contact-icon'><i className='fa fa-fax'></i></span>
                         </div>
-                        <input type='text' className='form-control' placeholder='Type fax#...' required onChange={(e) => setFax(e.target.value)}></input>
+                        <input type='tel' className='form-control' placeholder='Type fax#...' required onChange={(e) => setFax(e.target.value)} value={fax}></input>
                     </div>
                     <div className='input-group'>
                         <div className='input-group-prepend'>
                             <span className='input-group-text contact-icon'><i className='fa fa-envelope'></i></span>
                         </div>
-                        <input type='text' className='form-control' placeholder='Type e-mail...' required onChange={(e) => setEmail(e.target.value)}></input>
+                        <input type='email' className='form-control' placeholder='Type e-mail...' required onChange={(e) => setEmail(e.target.value)} value={email}></input>
                     </div>
                 </div>
             </div>
@@ -88,8 +88,10 @@ function ContactBox() {
 function ScheduleBox() {
 
     const [adults, setAdults] = useState(1)
-    const [checkInDate, setCheckInDate] = useState(new Date())
-    const [checkOutDate, setCheckOutDate] = useState(new Date())
+    const [checkInDate, setCheckInDate] = useState(new Date().getDate())
+    const [checkOutDate, setCheckOutDate] = useState(new Date().getDate())
+    const [days, setDays] = useState(0);
+    const [cost, setCost] = useState(0.0);
 
     return (
         <div className='card'>
@@ -97,7 +99,7 @@ function ScheduleBox() {
             <div className='card-body'>
                 <div className='form-group'>
                     <label htmlFor='adults-dropdown'>Adults:</label>
-                    <select className='custom-select' id='adults-dropdown' onChange={(e) => setAdults(e.target.value)}>
+                    <select className='custom-select form-control' id='adults-dropdown' onChange={(e) => setAdults(e.target.value)} value={adults}>
                         <option value={1} selected>1</option>
                         <option value={2}>2</option>
                         <option value={3}>3</option>
@@ -109,6 +111,36 @@ function ScheduleBox() {
                         <option value={9}>9</option>
                         <option value={10}>10</option>
                     </select>
+                    <div className='row'>
+                        <div className='col-sm'>
+                            <label>Check-In:</label>
+                            <input type='date' className='form-control' id='datepicker-checkin' onChange={(e) => {
+                                if (e.target.value < checkOutDate) {
+                                    setCheckInDate(e.target.value)
+                                    setDays(Math.abs(checkOutDate - e.target.value))
+                                }
+                            }} value={checkInDate}></input>
+                        </div>
+                        <div className='col-sm'>
+                            <label>Check-Out:</label>
+                            <input type='date' className='form-control' id='datepicker-checkout' onChange={(e) => {
+                                if (checkInDate < e.target.value) {
+                                    setCheckOutDate(e.target.value)
+                                    setDays(Math.abs(e.target.value - checkInDate))
+                                }
+                            }} value={checkOutDate}></input>
+                        </div>
+                    </div>
+                    <div className='row'>
+                        <div className='col-sm'>
+                            <label>Days:</label>
+                            <input type='text' className='form-control readonly-text-field' readOnly value={days}></input>
+                        </div>
+                        <div className='col-sm'>
+                            <label>Cost ($):</label>
+                            <input type='text' className='form-control readonly-text-field' readOnly value={cost}></input>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -117,7 +149,7 @@ function ScheduleBox() {
 
 function OtherBox() {
     const [message, setMessage] = useState('');
-    const [radioOption, setRadioOption] = useState(1);
+    const [range, setRange] = useState(1);
     const [priority, setPriority] = useState('');
 
     return (
@@ -126,9 +158,9 @@ function OtherBox() {
             <div className='card-body'>
                 <div className='form-group'>
                     <label htmlFor='msg'>Message:</label>
-                    <textarea className='form-control' id='msg' rows={14} placeholder='Type message here...' onChange={(e) => setMessage(e.target.value)}></textarea>
+                    <textarea className='form-control' id='msg' rows={14} placeholder='Type message here...' onChange={(e) => setMessage(e.target.value)} value={message}></textarea>
                     <label>Range:</label>
-                    <input type='range' className='form-range' min={1} max={10} onChange={(e) => setRadioOption(e.target.value)}></input>
+                    <input type='range' className='form-range' min={1} max={10} onChange={(e) => setRange(e.target.value)} value={range}></input>
                     <label htmlFor='prty'>Priority:</label>
                     <div className='row'>
                         <div className='col-sm'>

@@ -31,8 +31,6 @@
     border-color: green;
     padding-right: 100px;
     padding-left: 100px;
-    padding-top: 0px;
-    padding-bottom: 0px;
     margin-top: 0px;
     margin-bottom: 0px;
     text-align: center;
@@ -51,6 +49,7 @@
 
 .button-box {
     float: right;
+    margin-right: 1%;
 }
 
 label {
@@ -58,10 +57,7 @@ label {
     margin-bottom: 5px;
 }
 
-select {
-    margin-right: 10%;
-    padding-right: 90%;
-    padding-top: 5px;
-    padding-bottom: 5px;
-    border-color: lightgray;
+.readonly-text-field {
+    background-color: lightgray;
+    color: darkgray;
 }
