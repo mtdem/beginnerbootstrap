@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './Bootstrap.css'
 
 function Bootstrap() {
@@ -28,12 +28,12 @@ function UserBox() {
             <div className='card-body'>
                 <form>
                     <div className='row'>
-                        <label>Username:</label>
-                        <input type='text' className='form-control' placeholder='Type username...' required></input>
-                        <label>First Name:</label>
-                        <input type='text' className='form-control' placeholder='Type first name...' required></input>
-                        <label>Last Name:</label>
-                        <input type='text' className='form-control' placeholder='Type last name...' required></input>
+                        <label htmlFor='usernameInput'>Username:</label>
+                        <input type='text' className='form-control' id='usernameInput' placeholder='Type username...' required></input>
+                        <label htmlFor='firstNameInput'>First Name:</label>
+                        <input type='text' className='form-control' id='firstNameInput' placeholder='Type first name...' required></input>
+                        <label htmlFor='lastNameInput'>Last Name:</label>
+                        <input type='text' className='form-control' id='lastNameInput' placeholder='Type last name...' required></input>
                     </div>
                 </form>
             </div>
@@ -49,19 +49,19 @@ function ContactBox() {
                 <div className='form-group'>
                     <div className='input-group'>
                         <div className='input-group-prepend'>
-                            <i className='fa fa-phone'></i>
+                            <span className='input-group-text'><i className='fa fa-phone'></i></span>
                         </div>
                         <input type='text' className='form-control' placeholder='Type phone#...' required></input>
                     </div>
                     <div className='input-group'>
                         <div className='input-group-prepend'>
-                            <i className='fa fa-fax'></i>
+                            <span className='input-group-text'><i className='fa fa-fax'></i></span>
                         </div>
                         <input type='text' className='form-control' placeholder='Type fax#...' required></input>
                     </div>
                     <div className='input-group'>
                         <div className='input-group-prepend'>
-                            <i className='fa fa-envelope'></i>
+                            <span className='input-group-text'><i className='fa fa-envelope'></i></span>
                         </div>
                         <input type='text' className='form-control' placeholder='Type e-mail...' required></input>
                     </div>
@@ -80,6 +80,8 @@ function ScheduleBox() {
 }
 
 function OtherBox() {
+    const [radioOption, setRadioOption] = useState("");
+
     return (
         <div className='card'>
             <h4 className='card-header'>Other:</h4>
@@ -88,6 +90,8 @@ function OtherBox() {
                     <label htmlFor='msg'>Message:</label>
                     <textarea className='form-control' id='msg' rows={14} placeholder='Type message here...'></textarea>
                     <label>Range:</label>
+                    <input type='range' className='form-range' min={1} max={10}></input>
+
                     <label htmlFor='prty'>Priority</label>
                     <div className='row'>
                         <div className='col-sm'>
@@ -135,7 +139,7 @@ function LeftBox() {
 
 function FormText() {
     return (
-        <div className='card card-body'>
+        <div className='card card-body formText'>
             Fill out the form and click the submit button when complete...
         </div>
     )
@@ -145,10 +149,10 @@ function ButtonBox() {
     return (
         <div className='row'>
             <div className='col-sm'>
-                <button className='btn btn-block btn-info'><i className='fa fa-eraser'></i> Reset</button>
+                <button className='btn btn-block btn-info reset-button'><i className='fa fa-eraser'></i> Reset</button>
             </div>
             <div className='col-sm'>
-                <button className='btn btn-block btn-primary'><i className='fa fa-paper-plane'></i> Submit</button>
+                <button className='btn btn-block btn-primary submit-button'><i className='fa fa-paper-plane'></i> Submit</button>
             </div>
         </div>
     )

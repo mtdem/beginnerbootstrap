@@ -1,0 +1,16 @@
+.card {
+    border-color: lightblue;
+}
+
+.formText {
+    background-color: lightgrey;
+    border-color: darkgrey;
+}
+
+.reset-button {
+    background-color: lightblue;
+}
+
+.textLabel {
+    text-align: left;
+}
