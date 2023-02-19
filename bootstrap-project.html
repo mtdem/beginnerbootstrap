@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+    crossorigin="anonymous"></script>
+  <script type="text/JavaScript" src="https://momentjs.com/downloads/moment.js%22%3E"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js%22%3E"></script>
+  <script src="bootstrap-project-functions.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#000000" />
+
+  <title>Bootstrap Project</title>
+  <style>
+    .card {
+      border-color: lightblue;
+      margin: 10px;
+    }
+
+    .right-and-left-box {
+      margin: 10px;
+      padding: 15px;
+    }
+
+    .card-header {
+        background-color: lightblue;
+        padding: 10px;
+    }
+
+    .formText {
+        background-color: lightgrey;
+        border-color: darkgrey;
+    }
+
+    .reset-button {
+        background-color: lightblue;
+        border-color: lightblue;
+        padding-right: 100px;
+        padding-left: 100px;
+        text-align: center;
+    }
+
+    .submit-button {
+        background-color: green;
+        border-color: green;
+        padding-right: 100px;
+        padding-left: 100px;
+        margin-top: 0px;
+        margin-bottom: 0px;
+        text-align: center;
+    }
+
+    .contact-icon {
+        padding: 10px;
+        align-items: center;
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+    .textLabel {
+        text-align: left;
+    }
+
+    .button-box {
+        float: right;
+        margin-right: 1%;
+    }
+
+    label {
+        font-weight: bold;
+        margin-bottom: 5px;
+    }
+
+    .readonly-text-field {
+        background-color: lightgray;
+        color: darkgray;
+    }
+  </style>
+</head>
+
+<body>
+  <!--
+  ids for inputs:
+    // username (string): usernameInput
+    // first name (string): fistNameInput
+    // last name (string): lastNameInput
+    // phone number (number): phoneNumberInput
+    // fax (number): faxInput
+    // email (string): emailInput
+    // adults (number): adults-dropdown
+    // checkin (date): datepicker-checkin
+    // checkout (date): datepicker-checkout
+    // days (number): daysInput
+    // cost (number): costInput
+    // message (string): msg
+    // range (number): rangeInput
+    // priority (string):
+    //    low:    lowprty
+    //    medium: medprty
+    //    high:   highprty
+  -->
+  <div class='container-fluid'>
+            <div class='row'>
+                <div class='card card-body formText'>
+                    Fill out the form and click the submit button when complete...
+                </div>
+                <div class='row'>
+                    <div class='col-sm  right-and-left-box'>
+                        <div class='row'>
+                            <div class='card'>
+                                <h4 class='card-header'>User:</h4>
+                                <div class='card-body'>
+                                    <div class='form-group'>
+                                        <div class='row'>
+                                            <label for='usernameInput'>Username:</label>
+                                            <div class='col-xs-2'>
+                                                <input type='text' class='form-control usr' id='usernameInput' placeholder='Type username...' required></input>
+                                            </div>
+                                            <label for='firstNameInput'>First Name:</label>
+                                            <div class='col-xs-2'>
+                                                <input type='text' class='form-control usr' id='firstNameInput' placeholder='Type first name...' required></input>
+                                            </div>
+                                            <label for='lastNameInput'>Last Name:</label>
+                                            <div class='col-xs-2'>
+                                                <input type='text' class='form-control usr' id='lastNameInput' placeholder='Type last name...' required></input>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class='card'>
+                                <h4 class='card-header'>Contact:</h4>
+                                <div class='card-body'>
+                                    <div class='form-group'>
+                                        <div class='input-group'>
+                                            <div class='input-group-prepend'>
+                                                <span class='input-group-text contact-icon'><i class='fa fa-phone'></i></span>
+                                            </div>
+                                            <input type='text' class='form-control' placeholder='Type phone#...' id='phoneNumberInput' required></input>
+                                        </div>
+                                        <div class='input-group'>
+                                            <div class='input-group-prepend'>
+                                                <span class='input-group-text contact-icon'><i class='fa fa-fax'></i></span>
+                                            </div>
+                                            <input type='text' class='form-control' placeholder='Type fax#...' id='faxInput' required></input>
+                                        </div>
+                                        <div class='input-group'>
+                                            <div class='input-group-prepend'>
+                                                <span class='input-group-text contact-icon'><i class='fa fa-envelope'></i></span>
+                                            </div>
+                                            <input type='text' class='form-control' placeholder='Type e-mail...' id='emailInput' required></input>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class='card'>
+                                <h4 class='card-header'>Schedule:</h4>
+                                <div class='card-body'>
+                                    <div class='form-group'>
+                                        <label for='adults-dropdown'>Adults:</label>
+                                        <select class='custom-select form-control' id='adults-dropdown'>
+                                            <option value=1 selected>1</option>
+                                            <option value=2>2</option>
+                                            <option value=3>3</option>
+                                            <option value=4>4</option>
+                                            <option value=5>5</option>
+                                            <option value=6>6</option>
+                                            <option value=7>7</option>
+                                            <option value=8>8</option>
+                                            <option value=9>9</option>
+                                            <option value=10>10</option>
+                                        </select>
+                                        <div class='row'>
+                                            <div class='col-sm'>
+                                                <label>Check-In:</label>
+                                                <input type='date' class='form-control' id='datepicker-checkin'></input>
+                                            </div>
+                                            <div class='col-sm'>
+                                                <label>Check-Out:</label>
+                                                <input type='date' class='form-control' id='datepicker-checkout'></input>
+                                            </div>
+                                        </div>
+                                        <div class='row'>
+                                            <div class='col-sm'>
+                                                <label>Days:</label>
+                                                <input type='text' class='form-control readonly-text-field' id='daysInput' readonly></input>
+                                                <script>
+
+                                                </script>
+                                            </div>
+                                            <div class='col-sm'>
+                                                <label>Cost ($):</label>
+                                                <input type='text' class='form-control readonly-text-field' id='costInput' readonly></input>
+                                                <script>
+
+                                                </script>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class='col-sm right-and-left-box'>
+                        <div class='row'>
+                            <div class='card'>
+                                <h4 class='card-header'>Other:</h4>
+                                <div class='card-body'>
+                                    <div class='form-group'>
+                                        <label for='msg'>Message:</label>
+                                        <textarea class='form-control' id='msg' rows=14 placeholder='Type message here...'></textarea>
+                                        <label for='rangeInput'>Range:</label>
+                                        <input type='range' class='form-range' min=1 max=10 id='rangeInput'></input>
+                                        <script>
+
+                                        </script>
+                                        <label for='prty'>Priority:</label>
+                                        <div class='row'>
+                                            <div class='col-sm'>
+                                                <div class='form-check'>
+                                                    <input class='form-check-input' type='radio' id='lowprty' name='low-medium-high'></input>
+                                                    <label class='form-check-label' for='lowprty'>Low</label>
+                                                    <script>
+
+                                                    </script>
+                                                </div>
+                                            </div>
+                                            <div class='col-sm'>
+                                                <div class='form-check'>
+                                                    <input class='form-check-input' type='radio' id='medprty' name='low-medium-high'></input>
+                                                    <label class='form-check-label' for='medprty'> Medium</label>
+                                                    <script>
+
+                                                    </script>
+                                                </div>
+                                            </div>
+                                            <div class='col-sm'>
+                                                <div class='form-check'>
+                                                    <input class='form-check-input' type='radio' id='highprty' name='low-medium-high'></input>
+                                                    <label class='form-check-label' for='highprty'> High</label>
+                                                    <script>
+
+                                                    </script>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr />
+            <div class='row button-box'>
+                <div class='col-sm'>
+                    <button class='btn btn-block btn-warning reset-button' id='reset-inputs'><i class='fa fa-eraser'></i> Reset</button>
+                    <script>
+
+                    </script>
+                </div>
+                <div class='col-sm'>
+                    <button class='btn btn-block btn-primary submit-button' id='submit-inputs'><i class='fa fa-paper-plane'></i> Submit</button>
+                    <script>
+
+                    </script>
+                </div>
+            </div>
+        </div>
+</body>
+
+</html>
