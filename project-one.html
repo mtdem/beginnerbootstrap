@@ -4,17 +4,44 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <!-- Bootstrap -->
+  <!-- jQuery -->
+  <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+  <!-- BootStrap -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
   <!-- Moment -->
-  <script type="text/JavaScript" src="https://momentjs.com/downloads/moment.js%22%3E"></script>
+  <script type="text/JavaScript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js"></script>
   <!-- Toastr -->
-  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js%22%3E"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.4/toastr.min.css" rel="stylesheet"/>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.4/toastr.min.js"></script>
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
   <title>Bootstrap Project</title>
 
+  <!-- Script for Handling Inputs -->
+  <!--
+  ids for inputs:
+    // username (string): usernameInput
+    // first name (string): fistNameInput
+    // last name (string): lastNameInput
+    // phone number (number): phoneNumberInput
+    // fax (number): faxInput
+    // email (string): emailInput
+    // adults (number): adults-dropdown
+    // checkin (date): datepicker-checkin
+    // checkout (date): datepicker-checkout
+    // days (number): daysInput
+    // cost (number): costInput
+    // message (string): msg
+    // range (number): rangeInput
+    // priority (string):
+    //    low:    lowprty
+    //    medium: medprty
+    //    high:   highprty
+    // reset button: reset-inputs
+    // submit button: submit-inputs
+  -->
   <style>
     .card {
       margin: 1%;
@@ -23,33 +50,16 @@
 </head>
 
 <body>
-  <!--
-    ids for inputs:
-      // username (string): usernameInput
-      // first name (string): fistNameInput
-      // last name (string): lastNameInput
-      // phone number (number): phoneNumberInput
-      // fax (number): faxInput
-      // email (string): emailInput
-      // adults (number): adults-dropdown
-      // checkin (date): datepicker-checkin
-      // checkout (date): datepicker-checkout
-      // days (number): daysInput
-      // cost (number): costInput
-      // message (string): msg
-      // range (number): rangeInput
-      // priority (string):
-      //    low:    lowprty
-      //    medium: medprty
-      //    high:   highprty
-  -->
   <div class='container-fluid'>
+    <div class='card-body'>
+      <h1 style="color:red;">Bootstrap Booking Form</h1>
+    </div>
     <!-- Header Box -->
     <div class='card card-body bg-light'>
       Fill out the form and click the submit button when complete...
     </div>
     <!-- Body Form Box -->
-    <form>
+    <form class='was-validated' novalidate>
       <div class='row'>
         <!-- Right Side -->
         <div class='col'>
@@ -57,20 +67,20 @@
           <div class='row'>
             <div class='col'>
               <div class='card'>
-                <div class='card-header bg-primary'><strong>User:</strong></div>
+                <div class='card-header bg-primary' style='color: white;'><strong>User:</strong></div>
                 <div class='card-body'>
                   <div class='form-group'>
                     <div class='row'>
                       <div class='col'><label for='usernameInput'><strong>Username:</strong></label></div>
-                      <div class='col'><input type='text' class='form-control usr' id='usernameInput' placeholder='Type username...' required></input></div>
+                      <div class='col'><input type='text' class='form-control usr' id='usernameInput' placeholder='Type username...' required></input><div class='invalid-feedback'>must provide username</div></div>
                     </div>
                     <div class='row'>
                       <div class='col'><label for='firstNameInput'><strong>First Name:</strong></label></div>
-                      <div class='col'><input type='text' class='form-control usr' id='firstNameInput' placeholder='Type first name...' required></input></div>
+                      <div class='col'><input type='text' class='form-control usr' id='firstNameInput' placeholder='Type first name...' required></input><div class='invalid-feedback'>must provide first name</div></div>
                     </div>
                     <div class='row'>
                       <div class='col'><label for='lastNameInput'><strong>Last Name:</strong></label></div>
-                      <div class='col'><input type='text' class='form-control usr' id='lastNameInput' placeholder='Type last name...' required></input></div>
+                      <div class='col'><input type='text' class='form-control usr' id='lastNameInput' placeholder='Type last name...' required></input><div class='invalid-feedback'>must provide last name</div></div>
                     </div>
                   </div>
                 </div>
@@ -81,20 +91,20 @@
           <div class='row'>
             <div class='col'>
               <div class='card'>
-                <div class='card-header bg-primary'><strong>Contact:</strong></div>
+                <div class='card-header bg-primary' style='color: white;'><strong>Contact:</strong></div>
                 <div class='card-body'>
                   <div class='form-group'>
                     <div class='input-group'>
-                      <div class='input-group-prepend'><span class='input-group-text contact-icon'><i class='fa fa-phone'></i></span></div>
-                      <input type='text' class='form-control' placeholder='Type phone#...' id='phoneNumberInput' required></input>
+                      <div class='input-group-prepend'><span class='input-group-text'><i class='fa fa-phone'></i></span></div>
+                      <input type='text' class='form-control' placeholder='Type phone#...' id='phoneNumberInput' required></input><div class='invalid-feedback'>must provide phone number</div>
                     </div>
                     <div class='input-group'>
-                      <div class='input-group-prepend'><span class='input-group-text contact-icon'><i class='fa fa-fax'></i></span></div>
-                      <input type='text' class='form-control' placeholder='Type fax#...' id='faxInput' required></input>
+                      <div class='input-group-prepend'><span class='input-group-text'><i class='fa fa-fax'></i></span></div>
+                      <input type='text' class='form-control' placeholder='Type fax#...' id='faxInput' required></input><div class='invalid-feedback'>must provide fax</div>
                     </div>
                     <div class='input-group'>
-                      <div class='input-group-prepend'><span class='input-group-text contact-icon'><i class='fa fa-envelope'></i></span></div>
-                      <input type='text' class='form-control' placeholder='Type e-mail...' id='emailInput' required></input>
+                      <div class='input-group-prepend'><span class='input-group-text'><i class='fa fa-envelope'></i></span></div>
+                      <input type='text' class='form-control' placeholder='Type e-mail...' id='emailInput' required></input><div class='invalid-feedback'>must provide email</div>
                     </div>
                   </div>
                 </div>
@@ -105,7 +115,7 @@
           <div class='row'>
             <div class='col'>
               <div class='card'>
-                <div class='card-header bg-primary'><strong>Schedule:</strong></div>
+                <div class='card-header bg-primary' style='color: white;'><strong>Schedule:</strong></div>
                 <div class='card-body'>
                   <div class='form-group'>
                     <div class='row'>
@@ -127,22 +137,22 @@
                     </div>
                     <div class='row'>
                       <div class='col'>
-                          <label><strong>Check-In:</strong></label>
+                          <label><strong>Check-In:</strong></label> <!-- TODO: use moment for dates -->
                           <input type='date' class='form-control' id='datepicker-checkin'></input>
                       </div>
                       <div class='col'>
-                          <label><strong>Check-Out:</strong></label>
+                          <label><strong>Check-Out:</strong></label> <!-- TODO: use moment for dates -->
                           <input type='date' class='form-control' id='datepicker-checkout'></input>
                       </div>
                     </div>
                     <div class='row'>
                       <div class='col'>
                           <label><strong>Days:</strong></label>
-                          <input type='text' class='form-control readonly-text-field' id='daysInput' readonly placeholder='Enter Days...'></input>
+                          <input type='text' class='form-control readonly-text-field' id='daysInput' readonly placeholder='0'></input>
                       </div>
                       <div class='col'>
                           <label><strong>Cost ($):</strong></label>
-                          <input type='text' class='form-control readonly-text-field' id='costInput' readonly placeholder='Enter Cost...'></input>
+                          <input type='text' class='form-control readonly-text-field' id='costInput' readonly placeholder='0'></input>
                       </div>
                     </div>
                   </div>
@@ -155,7 +165,7 @@
         <div class='col'>
           <!-- Other Card -->
           <div class='card'>
-            <div class='card-header bg-primary'><strong>Other:</strong></div>
+            <div class='card-header bg-primary' style='color: white;'><strong>Other:</strong></div>
             <div class='card-body'>
               <div class='form-group'>
                 <label for='msg'><strong>Message:</strong></label>
@@ -192,14 +202,139 @@
 
     <!-- Footer Button Box -->
     <div class='row'>
-      <div class='col-md-6'><button class='btn btn-block bg-info btn-info reset-button' id='reset-inputs'><i class='fa fa-eraser fa-align-left'></i>Reset</button></div>
-      <div class='col-md-6'><button class='btn btn-block bg-success btn-success submit-button' id='submit-inputs'><i class='fa fa-paper-plane fa-align-left'></i>Submit</button></div>
+      <div class='col-md-6'></div>
+      <div class='col-md-6'>
+        <div class="row">
+          <div class='col-md-6'><button class='btn btn-block bg-info btn-info reset-button' type='reset' id='reset-inputs'><i class='fa fa-eraser fa-align-left'></i>Reset</button></div>
+          <div class='col-md-6'><button class='btn btn-block bg-success btn-success submit-button' type='submit' id='submit-inputs'><i class='fa fa-paper-plane fa-align-left'></i>Submit</button></div>
+        </div>
+      </div>
     </div>
-
   </div>
 
-    <!-- jQuery and BootStrap CDN imports -->
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
+  <script>
+    $(document).ready(function () {
+        'use strict';
+        // Bootstrap version > 4, so has-error doesn't really exist
+        // alternative: use bootstrap's form validation: https://getbootstrap.com/docs/4.6/components/forms/#validation
+        // didn't use moment because I couldn't find helpful resources on it
+        // and the site for moment recommended not to use it
+
+        // reset button logic
+        $('#reset-inputs').click(function () {
+          event.preventDefault();
+          $('form')[0].reset();
+          toastr.info('form reset');
+        });
+
+        // submit button logic
+        $('#submit-inputs').click(function () {
+          event.preventDefault();
+          
+          if (validateInputs()) {
+            toastr.success('form saved');
+          }
+          
+        });
+
+        // constraint of checkin date on checkout date
+        $('#datepicker-checkin').val(moment().format('YYYY-MM-DD'));
+        $('#datepicker-checkin').change(function () {
+          var checkInDate = $(this).val();
+          $('#datepicker-checkout').attr('min', checkInDate);
+          checkInDate = new Date(checkInDate);
+
+          var checkOutDate = new Date($('#datepicker-checkout').val());
+          var adultsVal = +$('#adults-dropdown').val();
+
+          processInputs(checkInDate, checkOutDate, adultsVal);
+        });
+
+        // constraint of checkout date on checkin date
+        $('#datepicker-checkout').change(function () {
+          var checkOutDate = $(this).val();
+          $('#datepicker-checkin').attr('max', checkOutDate);
+          checkOutDate = new Date(checkOutDate);
+          var checkInDate = new Date($('#datepicker-checkin').val());
+          var adultsVal = +$('#adults-dropdown').val();
+
+          processInputs(checkInDate, checkOutDate, adultsVal);
+        });
+
+        // schedule logic
+        $('#adults-dropdown').change(function () {
+          var checkInDate = new Date($('#datepicker-checkin').val());
+          var checkOutDate = new Date($('#datepicker-checkout').val());
+          var adultsVal = +$(this).val();
+          processInputs(checkInDate, checkOutDate, adultsVal);
+        });
+
+        function processInputs(checkInDate, checkOutDate, adultsVal) {
+          if (adultsVal > 0 && checkInDate !== null && checkOutDate !== null && checkInDate < checkOutDate) {
+            var daysValue = getDays(checkInDate, checkOutDate);
+            var costValue = getCost(checkInDate, checkOutDate, adultsVal);
+            $('#daysInput').val(`${daysValue}`);
+            $('#costInput').val(`${costValue}`);
+          }
+          else {
+            $('#daysInput').val('0');
+            $('#costInput').val('0');
+          }
+        }
+        
+        function getDays(checkInDate, checkOutDate) {
+          checkInTime = checkInDate.getTime();
+          checkOutTime = checkOutDate.getTime();
+          var numDays = Math.round((checkOutTime - checkInTime) / 86400000);
+          return numDays;
+        }
+
+        function getCost(checkInDate, checkOutDate, adults) {
+          checkInTime = checkInDate.getTime();
+          checkOutTime = checkOutDate.getTime();
+          var numDays = Math.round((checkOutTime - checkInTime) / 86400000);
+          return 150 * numDays * adults;
+        }
+
+        function validateInputs() {
+          var validate = true;
+
+          // user card
+          var username = $('#usernameInput').val();
+          var firstname = $('#firstNameInput').val();
+          var lastname = $('#lastNameInput').val();
+          if (username.length == 0) {
+            toastr.error('username is empty');
+            validate = false;
+          }
+          if (firstname.length == 0) {
+            toastr.error('firstname is empty');
+            validate = false;
+          }
+          if (lastname.length == 0) {
+            toastr.error('lastname is empty');
+            validate = false;
+          }
+          // contact card
+          var phone = $('#phoneNumberInput').val();
+          var fax = $('#faxInput').val();
+          var email = $('#emailInput').val();
+          if (!/^[0-9\-\+\s\(\)]*$/.test(phone) || phone.length == 0) {
+            toastr.error('phone number is invalid');
+            validate = false;
+          }
+          if (!/^[0-9\-\+\s\(\)]*$/.test(fax) || fax.length == 0) {
+            toastr.error('fax is invalid');
+            validate = false;
+          }
+          if (!/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email) || email.length == 0) {
+            toastr.error('email is invalid');
+            validate = false;
+          }
+
+          return validate;
+        }
+      });
+  </script>
 </body>
 </html>
